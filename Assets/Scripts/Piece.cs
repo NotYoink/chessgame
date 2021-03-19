@@ -6,7 +6,7 @@ public class Piece : MonoBehaviour
 {
     public bool white;
     public bool highlighted = false;
-
+   
     void Start()
     {
         
@@ -15,6 +15,12 @@ public class Piece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(highlighted == true)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+
+            }
+        }
     }
 }

@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -210,6 +211,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8927566203177619671, guid: 1dd745846b7291248bc87fae3738f101,
+        type: 3}
+      propertyPath: circlePrefab
+      value: 
+      objectReference: {fileID: 4744520046156994072, guid: 7ee99e5f4d3493d4991d6da4a7bdca08,
+        type: 3}
+    - target: {fileID: 4606827691490749289, guid: 1dd745846b7291248bc87fae3738f101,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4606827691490749289, guid: 1dd745846b7291248bc87fae3738f101,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -227,6 +239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4606827691490749289, guid: 1dd745846b7291248bc87fae3738f101,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606827691490749289, guid: 1dd745846b7291248bc87fae3738f101,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -239,16 +256,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606827691490749289, guid: 1dd745846b7291248bc87fae3738f101,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606827691490749289, guid: 1dd745846b7291248bc87fae3738f101,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4606827691490749289, guid: 1dd745846b7291248bc87fae3738f101,
         type: 3}

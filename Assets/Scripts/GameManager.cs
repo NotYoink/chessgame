@@ -11,13 +11,4 @@ public class GameManager : MonoBehaviour
         board.CreateBoard();
         board.setupPieces();
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            board.RotateBoard();
-        }
-    }
-
 }

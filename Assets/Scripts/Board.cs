@@ -8,6 +8,8 @@ public class Board : MonoBehaviour
 
     public GameObject pawnPrefab, knightPrefab, bishopPrefab, rookPrefab, queenPrefab, kingPrefab;
 
+    public GameObject circlePrefab;
+
     public Material whiteMat, blackMat;
     public Material whitePiece, blackPiece;
 
@@ -81,17 +83,6 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void RotateBoard()
-    {
-        for (int i = 0; i < 8; i++)
-        {
-            for (int j = 0; j < 8; j++)
-            {
-                squares[i, j].gameObject.transform.localPosition = new Vector3(7 - squares[i, j].gameObject.transform.localPosition.x, 7 - squares[i, j].gameObject.transform.localPosition.y, 0);
-            }
-        }
-    }
-
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -104,6 +95,8 @@ public class Board : MonoBehaviour
             if(squares[AMX,AMY].transform.childCount > 0)
             {
                 squares[AMX, AMY].GetComponentInChildren<Piece>().highlighted = true;
+                Instantiate(circlePrefab, new Vector3(AMX, AMY, 0), Quaternion.identity);
+               
             }
 
         }
