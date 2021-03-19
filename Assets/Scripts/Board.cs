@@ -14,6 +14,9 @@ public class Board : MonoBehaviour
     public GameObject[,] squares = new GameObject[8, 8];
     GameObject[] pieceArrangement;
 
+    public float adjustedMousePosX;
+    public float adjustedMousePosY;
+
     [HideInInspector]
     public static string[] alphabet = new string[] {"a", "b", "c", "d", "e", "f", "g", "h"};
 
@@ -86,6 +89,20 @@ public class Board : MonoBehaviour
             {
                 squares[i, j].gameObject.transform.localPosition = new Vector3(7 - squares[i, j].gameObject.transform.localPosition.x, 7 - squares[i, j].gameObject.transform.localPosition.y, 0);
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Vector3 mousePos = Input.mousePosition;
+            adjustedMousePosX = mousePos.x / 100;
+            adjustedMousePosY = mousePos.x / 100;
+            Mathf.FloorToInt(adjustedMousePosX);
+            Mathf.FloorToInt(adjustedMousePosY);
+            print(adjustedMousePosX); 
+            print(adjustedMousePosY);
         }
     }
 

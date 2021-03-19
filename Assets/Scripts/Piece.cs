@@ -5,6 +5,7 @@ using UnityEngine;
 public class Piece : MonoBehaviour
 {
     public bool white;
+    public bool highlighted = false;
 
     void Start()
     {
