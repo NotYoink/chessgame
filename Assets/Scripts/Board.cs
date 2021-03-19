@@ -14,8 +14,8 @@ public class Board : MonoBehaviour
     public GameObject[,] squares = new GameObject[8, 8];
     GameObject[] pieceArrangement;
 
-    public float adjustedMousePosX;
-    public float adjustedMousePosY;
+    private float AMX;
+    private float AMY;
 
     [HideInInspector]
     public static string[] alphabet = new string[] {"a", "b", "c", "d", "e", "f", "g", "h"};
@@ -96,13 +96,16 @@ public class Board : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Vector3 mousePos = Input.mousePosition;
-            adjustedMousePosX = mousePos.x / 100;
-            adjustedMousePosY = mousePos.x / 100;
-            Mathf.FloorToInt(adjustedMousePosX);
-            Mathf.FloorToInt(adjustedMousePosY);
-            print(adjustedMousePosX); 
-            print(adjustedMousePosY);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            int AMX = (int)Mathf.FloorToInt(mousePos.x + 0.5f);
+            int AMY = (int)Mathf.FloorToInt(mousePos.y + 0.5f);
+
+
+            if(squares[AMX,AMY].transform.childCount > 0)
+            {
+                squares[AMX, AMY].GetComponentInChildren<Piece>().highlighted = true;
+            }
+
         }
     }
 
