@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5183370990460295228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4606827691490749289}
+  - component: {fileID: 783887057788164352}
+  - component: {fileID: -8927566203177619671}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4606827691490749289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183370990460295228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &783887057788164352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183370990460295228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75062b49725c5f544bb9b92da59ec7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8927566203177619671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183370990460295228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe144601970fd4847970c591bff9958f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 8715023721389352983, guid: dbb3c99863d362042b79e4cc00e3175e,
+    type: 3}
+  pawnPrefab: {fileID: 5084214670963712797, guid: ceb2a3b9413e0764fbfd7e3ca573960d,
+    type: 3}
+  knightPrefab: {fileID: 8452083677996148166, guid: 016099a26512fee47a649f553ca7e68d,
+    type: 3}
+  bishopPrefab: {fileID: 6930375311646807968, guid: f736953d5c110874b83cb484f120aed9,
+    type: 3}
+  rookPrefab: {fileID: 5095108468448505069, guid: a7095f3be2d93524abb7a1db576eda37,
+    type: 3}
+  queenPrefab: {fileID: 5390704368008678160, guid: d36b00ca5fcff3943895da44b8d40902,
+    type: 3}
+  kingPrefab: {fileID: 3878032289652649076, guid: cafe1d390f59d5146ae36e119f03a15c,
+    type: 3}
+  whiteMat: {fileID: 2100000, guid: a5c8f3d8a3b76bc478391de4c34d69ea, type: 2}
+  blackMat: {fileID: 2100000, guid: 4724b4d22758c9d4ab6be1a3690cf6be, type: 2}
+  whitePiece: {fileID: 2100000, guid: 3d1d66a41b2f8964493dd4a8ad61a5a0, type: 2}
+  blackPiece: {fileID: 2100000, guid: 4668c50537c9b2f49ac4c64d35f0f73c, type: 2}
