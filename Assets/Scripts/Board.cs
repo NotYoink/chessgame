@@ -16,6 +16,8 @@ public class Board : MonoBehaviour
     public GameObject[,] squares = new GameObject[8, 8];
     GameObject[] pieceArrangement;
 
+    public string currentplayer = "White";
+
     private float AMX;
     private float AMY;
 
@@ -65,21 +67,25 @@ public class Board : MonoBehaviour
             GameObject newPawnWhite = Instantiate(pawnPrefab, squares[i, 1].transform);
             newPawnWhite.gameObject.GetComponent<Piece>().white = true;
             newPawnWhite.GetComponent<Renderer>().material = whitePiece;
+            newPawnWhite.tag = "White"; 
 
             //white pieces
             GameObject newPieceWhite = Instantiate(pieceArrangement[i], squares[i, 0].transform);
             newPieceWhite.gameObject.GetComponent<Piece>().white = true;
             newPieceWhite.GetComponent<Renderer>().material = whitePiece;
+            newPieceWhite.tag = "White";
 
             //black pawns
             GameObject newBlackPawn = Instantiate(pawnPrefab, squares[i, 6].transform);
             newBlackPawn.gameObject.GetComponent<Piece>().white = false;
             newBlackPawn.GetComponent<Renderer>().material = blackPiece;
+            newBlackPawn.tag = "Black";
 
             //black pieces
             GameObject newBlackPiece = Instantiate(pieceArrangement[i], squares[i, 7].transform);
             newBlackPiece.gameObject.GetComponent<Piece>().white = false;
             newBlackPiece.GetComponent<Renderer>().material = blackPiece;
+            newBlackPawn.tag = "Black";
         }
     }
 
@@ -96,10 +102,11 @@ public class Board : MonoBehaviour
             if(squares[AMX,AMY].transform.childCount > 0)
             {
                 squares[AMX, AMY].GetComponentInChildren<Piece>().highlighted = true;
-                circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
+                if (squares[AMX, AMY].transform.GetChild(0).tag == currentplayer)
+                {
+                    circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
+                }
             }
-
         }
     }
-
 }
