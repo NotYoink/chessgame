@@ -101,11 +101,18 @@ public class Board : MonoBehaviour
 
             if(squares[AMX,AMY].transform.childCount > 0)
             {
-                squares[AMX, AMY].GetComponentInChildren<Piece>().highlighted = true;
-                if (squares[AMX, AMY].transform.GetChild(0).tag == currentplayer)
+                if (squares[AMX, AMY].transform.GetChild(0).CompareTag(currentplayer))
                 {
                     circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
                 }
+                else
+                {
+                    circlePrefab.transform.position = new Vector3(-10,- 10, 0);
+                }
+            }
+            else
+            {
+
             }
         }
     }
