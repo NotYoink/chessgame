@@ -92,11 +92,11 @@ public class Board : MonoBehaviour
             int AMY = (int)Mathf.FloorToInt(mousePos.y + 0.5f);
 
 
+
             if(squares[AMX,AMY].transform.childCount > 0)
             {
                 squares[AMX, AMY].GetComponentInChildren<Piece>().highlighted = true;
-                Instantiate(circlePrefab, new Vector3(AMX, AMY, 0), Quaternion.identity);
-               
+                circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
             }
 
         }
