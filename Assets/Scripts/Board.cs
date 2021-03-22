@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
+    private static string currentplayer = "White";
     public GameObject tilePrefab;
 
     public GameObject pawnPrefab, knightPrefab, bishopPrefab, rookPrefab, queenPrefab, kingPrefab;
@@ -16,13 +17,8 @@ public class Board : MonoBehaviour
     public GameObject[,] squares = new GameObject[8, 8];
     GameObject[] pieceArrangement;
 
-    public string currentplayer = "White";
-
-    private float AMX;
-    private float AMY;
-
     [HideInInspector]
-    public static string[] alphabet = new string[] {"a", "b", "c", "d", "e", "f", "g", "h"};
+    public static string[] alphabet = new string[] { "a", "b", "c", "d", "e", "f", "g", "h" };
 
     public void CreateBoard()
     {
@@ -47,7 +43,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void setupPieces()
+    public void SetupPieces()
     {
         pieceArrangement = new GameObject[8]
         {
@@ -93,26 +89,31 @@ public class Board : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            //calculating where the player clicked
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             int AMX = (int)Mathf.FloorToInt(mousePos.x + 0.5f);
             int AMY = (int)Mathf.FloorToInt(mousePos.y + 0.5f);
 
-
-
-            if(squares[AMX,AMY].transform.childCount > 0)
+            if(squares[AMX,AMY].transform.childCount > 0 && squares[AMX, AMY].transform.GetChild(0).CompareTag(currentplayer)) //clicking on own piece
             {
-                if (squares[AMX, AMY].transform.GetChild(0).CompareTag(currentplayer))
-                {
-                    circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
-                }
-                else
-                {
-                    circlePrefab.transform.position = new Vector3(-10,- 10, 0);
-                }
+                circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
             }
-            else
+            else if (squares[AMX, AMY].transform.childCount > 0 && !squares[AMX, AMY].transform.GetChild(0).CompareTag(currentplayer)) //clicking on enemy piece
             {
-                if (circlePrefab.transform.position.x >= 0 && circlePrefab.transform.position.y >= 0 && circlePrefab.transform.position.x < 8 && circlePrefab.transform.position.y < 8)
+                GameObject capturedPiece = squares[AMX, AMY].transform.GetChild(0).gameObject;
+                Destroy(capturedPiece);
+                squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.position = new Vector3(AMX, AMY, 0);
+                squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.SetParent(squares[AMX, AMY].transform, true);
+                circlePrefab.transform.position = new Vector3(-10, -10, 0);
+                if (currentplayer == "White")
+                {
+                    currentplayer = "Black";
+                }
+                else currentplayer = "White";
+            }
+            else //clicking on empty square
+            {
+                if (circlePrefab.transform.position.x > 0 && circlePrefab.transform.position.y > 0 && circlePrefab.transform.position.x <= 8 && circlePrefab.transform.position.y <= 8)
                 {
                     squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.position = new Vector3(AMX, AMY, 0);
                     squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.SetParent(squares[AMX, AMY].transform, true);
@@ -121,10 +122,7 @@ public class Board : MonoBehaviour
                     {
                         currentplayer = "Black";
                     }
-                    else
-                    {
-                        currentplayer = "White";
-                    }
+                    else currentplayer = "White";
                 }
             }
         }

@@ -9,6 +9,6 @@ public class GameManager : MonoBehaviour
     {
         board = gameObject.GetComponent<Board>();
         board.CreateBoard();
-        board.setupPieces();
+        board.SetupPieces();
     }
 }
