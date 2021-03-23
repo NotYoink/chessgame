@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    public string currentplayer = "White";
+    public bool firstClick = true;
+    public string currentPlayer = "White";
     public GameObject tilePrefab;
 
     public GameObject pawnPrefab, knightPrefab, bishopPrefab, rookPrefab, queenPrefab, kingPrefab;
@@ -94,35 +95,48 @@ public class Board : MonoBehaviour
             int AMX = (int)Mathf.FloorToInt(mousePos.x + 0.5f);
             int AMY = (int)Mathf.FloorToInt(mousePos.y + 0.5f);
 
-            if(squares[AMX,AMY].transform.childCount > 0 && squares[AMX, AMY].transform.GetChild(0).CompareTag(currentplayer)) //clicking on own piece
+            if (firstClick == true)
             {
-                circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
-            }
-            else if (squares[AMX, AMY].transform.childCount > 0 && !squares[AMX, AMY].transform.GetChild(0).CompareTag(currentplayer)) //clicking on enemy piece
-            {
-                GameObject capturedPiece = squares[AMX, AMY].transform.GetChild(0).gameObject;
-                Destroy(capturedPiece);
-                squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.position = new Vector3(AMX, AMY, 0);
-                squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.SetParent(squares[AMX, AMY].transform, true);
-                circlePrefab.transform.position = new Vector3(-10, -10, 0);
-                if (currentplayer == "White")
+                if (squares[AMX, AMY].transform.childCount > 0 && squares[AMX, AMY].transform.GetChild(0).CompareTag(currentPlayer)) //clicking on own piece
                 {
-                    currentplayer = "Black";
+                    circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
+                    firstClick = false;
                 }
-                else currentplayer = "White";
             }
-            else //clicking on empty square
+            else
             {
-                if (circlePrefab.transform.position.x > 0 && circlePrefab.transform.position.y > 0 && circlePrefab.transform.position.x <= 8 && circlePrefab.transform.position.y <= 8)
+                if (squares[AMX, AMY].transform.childCount > 0 && squares[AMX, AMY].transform.GetChild(0).CompareTag(currentPlayer)) //clicking on own piece
                 {
+                    circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
+                }
+                else if (squares[AMX, AMY].transform.childCount > 0 && !squares[AMX, AMY].transform.GetChild(0).CompareTag(currentPlayer)) //clicking on enemy piece
+                {
+                    GameObject capturedPiece = squares[AMX, AMY].transform.GetChild(0).gameObject;
+                    Destroy(capturedPiece);
                     squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.position = new Vector3(AMX, AMY, 0);
                     squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.SetParent(squares[AMX, AMY].transform, true);
                     circlePrefab.transform.position = new Vector3(-10, -10, 0);
-                    if (currentplayer == "White")
+                    firstClick = true;
+                    if (currentPlayer == "White")
                     {
-                        currentplayer = "Black";
+                        currentPlayer = "Black";
                     }
-                    else currentplayer = "White";
+                    else currentPlayer = "White";
+                }
+                else //clicking on empty square
+                {
+                    if (circlePrefab.transform.position.x > 0 && circlePrefab.transform.position.y > 0 && circlePrefab.transform.position.x <= 8 && circlePrefab.transform.position.y <= 8)
+                    {
+                        squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.position = new Vector3(AMX, AMY, 0);
+                        squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.SetParent(squares[AMX, AMY].transform, true);
+                        circlePrefab.transform.position = new Vector3(-10, -10, 0);
+                        firstClick = true;
+                        if (currentPlayer == "White")
+                        {
+                            currentPlayer = "Black";
+                        }
+                        else currentPlayer = "White";
+                    }
                 }
             }
         }
