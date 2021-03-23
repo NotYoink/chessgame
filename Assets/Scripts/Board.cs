@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    private static string currentplayer = "White";
+    public string currentplayer = "White";
     public GameObject tilePrefab;
 
     public GameObject pawnPrefab, knightPrefab, bishopPrefab, rookPrefab, queenPrefab, kingPrefab;
@@ -81,7 +81,7 @@ public class Board : MonoBehaviour
             GameObject newBlackPiece = Instantiate(pieceArrangement[i], squares[i, 7].transform);
             newBlackPiece.gameObject.GetComponent<Piece>().white = false;
             newBlackPiece.GetComponent<Renderer>().material = blackPiece;
-            newBlackPawn.tag = "Black";
+            newBlackPiece.tag = "Black";
         }
     }
 
