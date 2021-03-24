@@ -125,7 +125,7 @@ public class Board : MonoBehaviour
                 }
                 else //clicking on empty square
                 {
-                    if (circlePrefab.transform.position.x > 0 && circlePrefab.transform.position.y > 0 && circlePrefab.transform.position.x <= 8 && circlePrefab.transform.position.y <= 8)
+                    if (circlePrefab.transform.position.x >= 0 && circlePrefab.transform.position.y >= 0 && circlePrefab.transform.position.x < 8 && circlePrefab.transform.position.y < 8)
                     {
                         squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.position = new Vector3(AMX, AMY, 0);
                         squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.SetParent(squares[AMX, AMY].transform, true);
