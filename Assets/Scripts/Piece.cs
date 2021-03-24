@@ -5,22 +5,20 @@ using UnityEngine;
 public class Piece : MonoBehaviour
 {
     public bool white;
-    public bool highlighted = false;
-   
+    public List<int> legalMoves;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(highlighted == true)
+        if (gameObject.name == "Rook(Clone)" && white)
         {
-            if (Input.GetButtonDown("Fire1"))
+            for (int i = 1; i < 8; i++)
             {
-
+                legalMoves.Add(i);
             }
+        }
+        if (gameObject.name == "Pawn(Clone)" && white)
+        {
+            legalMoves.Add(1);
         }
     }
 }

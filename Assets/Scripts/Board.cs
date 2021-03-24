@@ -29,7 +29,7 @@ public class Board : MonoBehaviour
             {
                 squares[i, j] = Instantiate(tilePrefab, new Vector3(i, j, 0), Quaternion.identity);
 
-                if (i %2 != 0 && j % 2 != 0 || i % 2 == 0 && j % 2 == 0)
+                if (i % 2 != 0 && j % 2 != 0 || i % 2 == 0 && j % 2 == 0)
                 {
                     squares[i, j].GetComponent<Renderer>().material = blackMat;
                 }
@@ -39,7 +39,7 @@ public class Board : MonoBehaviour
                 }
 
                 squares[i, j].transform.SetParent(gameObject.transform);
-                squares[i, j].name = alphabet[i] + (j + 1);
+                squares[i, j].name = alphabet[i] + (j+1);
             }
         }
     }
