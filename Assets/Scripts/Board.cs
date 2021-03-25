@@ -94,11 +94,10 @@ public class Board : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             int AMX = (int)Mathf.FloorToInt(mousePos.x + 0.5f);
             int AMY = (int)Mathf.FloorToInt(mousePos.y + 0.5f);
-            Transform child = squares[AMX, AMY].transform.GetChild(0);
 
             if (firstClick == true)
             {
-                if (squares[AMX, AMY].transform.childCount > 0 && child.CompareTag(currentPlayer)) //clicking on own piece
+                if (squares[AMX, AMY].transform.childCount > 0 && squares[AMX, AMY].transform.GetChild(0).CompareTag(currentPlayer)) //clicking on own piece
                 {
                     circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
                     firstClick = false;
@@ -106,13 +105,13 @@ public class Board : MonoBehaviour
             }
             else
             {
-                if (squares[AMX, AMY].transform.childCount > 0 && child.CompareTag(currentPlayer)) //clicking on own piece
+                if (squares[AMX, AMY].transform.childCount > 0 && squares[AMX, AMY].transform.GetChild(0).CompareTag(currentPlayer)) //clicking on own piece
                 {
                     circlePrefab.transform.position = new Vector3(AMX, AMY, 0);
                 }
-                else if (squares[AMX, AMY].transform.childCount > 0 && !child.CompareTag(currentPlayer)) //clicking on enemy piece
+                else if (squares[AMX, AMY].transform.childCount > 0 && !squares[AMX, AMY].transform.GetChild(0).CompareTag(currentPlayer)) //clicking on enemy piece
                 {
-                    GameObject capturedPiece = child.gameObject;
+                    GameObject capturedPiece = squares[AMX, AMY].transform.GetChild(0).gameObject;
                     Destroy(capturedPiece);
                     squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.position = new Vector3(AMX, AMY, 0);
                     squares[(int)circlePrefab.transform.position.x, (int)circlePrefab.transform.position.y].transform.GetChild(0).transform.SetParent(squares[AMX, AMY].transform, true);
